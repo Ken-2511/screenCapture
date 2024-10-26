@@ -122,11 +122,12 @@ int saveBitmap(HBITMAP hBitmap, wstring filename) {
     return 0;
 }
 
-wstring getCurrentTimeFormatted() {
+wstring getFileName(const wstring& path) {
     SYSTEMTIME time;
     GetLocalTime(&time); // 获取本地时间
 
     wstringstream ss;
+    ss << path << L"\\"; // 指定路径
     ss << setw(2) << setfill(L'0') << time.wYear % 100 << L"-"  // 年份的最后两位
        << setw(2) << setfill(L'0') << time.wMonth << L"-"       // 月
        << setw(2) << setfill(L'0') << time.wDay << L"-"         // 日
@@ -142,7 +143,7 @@ int main() {
 
     while (true) {
         // 生成带当前时间的文件名
-        wstring filename = getCurrentTimeFormatted();
+        wstring filename = getFileName(L"D:\\screenCap");
 
         // 截屏并保存
         HBITMAP hBitmap = captureScreen();
