@@ -155,8 +155,8 @@ int main() {
             wcerr << L"Failed to capture screen on attempt " << filename << endl;
         }
 
-        // 每次循环暂停 30 秒
-        Sleep(30000);
+        // 每次循环暂停 42 秒
+        Sleep(42000);
     }
 
     return 0;
