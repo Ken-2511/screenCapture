@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include <shellscalingapi.h>
+#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <iomanip>
@@ -208,6 +209,11 @@ wstring getTimeString()
 
 int main()
 {
+    // 重定向标准输出到文件
+    std::ofstream log("C:\\Users\\IWMAI\\OneDrive\\Programs\\C\\ScreenCapture\\output.log", std::ios::app);
+    std::cout.rdbuf(log.rdbuf());  // 重定向标准输出到文件
+    std::cerr.rdbuf(log.rdbuf());  // 重定向标准错误到文件
+
     initializeDPI();
 
     while (true) {
